@@ -55,7 +55,7 @@ def main():
 
     dfs = []
 
-    target = f"R_EX_M_{args.target}_e"
+    target = f"R_EX_{args.target}_e"
 
     for medium in media:
         if medium not in mediadb:
@@ -63,7 +63,7 @@ def main():
 
         print(f"Optimizing {args.target} production in medium {medium}.")
 
-        env = Environment.from_compounds(mediadb[medium], fmt_func=lambda x: f"R_EX_M_{x}_e")
+        env = Environment.from_compounds(mediadb[medium], fmt_func=lambda x: f"R_EX_{x}_e")
         df = design(species, target, env, size=args.species, iters=args.iters, growth=args.growth, modelcache=cache)
         df["medium"] = medium
         df["target"] = args.target
